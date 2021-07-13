@@ -1,0 +1,49 @@
+﻿<Window x:Class="HomeWork_13_MVVM.View.DeleteClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork_13_MVVM.View"
+        xmlns:viewmodels="clr-namespace:HomeWork_13_MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="DeleteClient" Height="200" Width="320" WindowStyle="None">
+    <Window.DataContext>
+        <viewmodels:DeleteClientVM/>
+    </Window.DataContext>
+    <Grid>
+        <TextBlock HorizontalAlignment="Left"
+                   Margin="10,10,0,0"
+                   TextWrapping="Wrap" 
+                   Text="Вы действительно хотите удалить клента"
+                   VerticalAlignment="Top" 
+                   FontSize="16"
+                   Height="46" Width="293"/>
+        <TextBlock HorizontalAlignment="Left"
+                   Margin="63,33,0,0" 
+                   TextWrapping="Wrap"
+                   Text="{Binding SelectedClientName}"
+                   FontSize="16"
+                   VerticalAlignment="Top"
+                   Height="23" Width="240"/>
+        <TextBlock HorizontalAlignment="Left" 
+                   Margin="10,56,0,0"
+                   TextWrapping="Wrap" 
+                   Text="учитывая, что этот процесс необратим?"
+                   VerticalAlignment="Top" 
+                   FontSize="16"
+                   Height="45" Width="293"/>
+        <Button Content="Нет"
+                HorizontalAlignment="Left" 
+                Margin="10,138,0,0" 
+                VerticalAlignment="Top"
+                Width="128" Height="45"
+                Command="{Binding CancelDeleteClientCommand}"/>
+        <Button Content="Да" 
+                HorizontalAlignment="Left"
+                Margin="175,138,0,0"
+                VerticalAlignment="Top" 
+                Width="128" Height="45"
+                Command="{Binding ConfirmDeleteClientCommand}"/>
+
+    </Grid>
+</Window>

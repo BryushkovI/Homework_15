@@ -1,0 +1,304 @@
+﻿<Window x:Class="HomeWork_13_MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork_13_MVVM"
+        xmlns:viewmodels="clr-namespace:HomeWork_13_MVVM.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" >
+    <Window.DataContext>
+        <viewmodels:MainWindowVM/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox HorizontalAlignment="Left"
+                  Margin="150,10,0,0" 
+                  VerticalAlignment="Top"
+                  Width="212" Height="40"
+                  ItemsSource="{Binding Departments}"
+                  SelectedItem="{Binding Department,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Nameing}" FontSize="20" Margin="1"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left"
+                   TextAlignment="Center"
+                   Margin="10,10,0,0" TextWrapping="Wrap" 
+                   FontSize="25"
+                   Text="Отдел" VerticalAlignment="Top"
+                   Height="40" Width="135"/>
+        <ListView HorizontalAlignment="Left"
+                  Height="230" Margin="10,55,0,0"
+                  VerticalAlignment="Top" Width="695"
+                  ItemsSource="{Binding Department.ClientList, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedClient, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Header="Имя" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Номер счета" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Number}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Баланс" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Bank_Account,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Вклад" Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Deposite}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Процент по вкладу" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Deposite_percent}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Кредит" Width="90">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Credit}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Процент по кредиту" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Credit_percent}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Border BorderBrush="Black"
+                BorderThickness="1"
+                HorizontalAlignment="Left"
+                Height="275"
+                VerticalAlignment="Top" Width="348" Grid.ColumnSpan="2"
+                Margin="715,10,0,0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Width="172">
+                    <TextBlock TextWrapping="Wrap"
+                               Text="Название организации"
+                               Height="30"
+                               VerticalAlignment="Center"
+                               TextAlignment="Center"
+                               FontSize="14"
+                                HorizontalAlignment="Center"
+                                           Margin="10" Width="152"/>
+                    <TextBlock TextWrapping="Wrap"
+                                           Text="Номер клиента"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontSize="14"
+                                           HorizontalAlignment="Center"
+                                           Margin="10" Width="152"/>
+                    <TextBlock TextWrapping="Wrap"
+                                           Text="Баланс"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontSize="14"
+                                           HorizontalAlignment="Center"
+                                           Margin="10" Width="152"/>
+                    <TextBlock TextWrapping="Wrap"
+                                           Text="Текущая сумма вклада"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontSize="14"
+                                           HorizontalAlignment="Center"
+                                           Margin="10" Width="152"/>
+                    <TextBlock TextWrapping="Wrap"
+                                           Text="Текущая сумма кредита"
+                                           Height="38"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           FontSize="14"
+                                           HorizontalAlignment="Center"
+                                           Margin="10" Width="152"/>
+                </StackPanel>
+                <StackPanel Width="174" Orientation="Vertical" DataContext="{Binding SelectedClient,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <TextBox Height="30"
+                             Text="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                             TextWrapping="Wrap" 
+                             Margin="10"
+                             TextAlignment="Left"
+                             FontSize="14"/>
+                    <TextBox Height="30" 
+                             Text="{Binding Number,Mode=OneWay}"
+                             TextWrapping="Wrap" 
+                             Margin="10"
+                             IsEnabled="False"
+                             TextAlignment="Left"
+                             FontSize="14"/>
+                    <TextBox Height="30" 
+                             Text="{Binding Bank_Account,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                             TextWrapping="Wrap" 
+                             Margin="10"
+                             TextAlignment="Left"
+                             FontSize="14"/>
+                    <TextBox Height="30" 
+                             Text="{Binding CurentDeposite,Mode=OneWay}"
+                             TextWrapping="Wrap" 
+                             Margin="10"
+                             IsEnabled="False"
+                             TextAlignment="Left"
+                             FontSize="14"/>
+                    <TextBox Height="30"
+                             Text="{Binding CurentCredit,Mode=OneWay}"
+                             TextWrapping="Wrap" 
+                             Margin="10"
+                             IsEnabled="False"
+                             TextAlignment="Left"
+                             FontSize="14"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+        <Button Content="Добавить клиента"
+                HorizontalAlignment="Left"
+                Margin="10,290,0,0"
+                VerticalAlignment="Top" 
+                Width="115" Height="40"
+                Command="{Binding AddNewClientCommand}">
+        </Button>
+        <Button Content="Сохранить и выйти" 
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Margin="9.667,543,0,0"
+                VerticalAlignment="Top"
+                Width="115" Height="40"
+                Command="{Binding ExitCommand}"/>
+        <Button Content="Удалить клиента" 
+                HorizontalAlignment="Left"
+                Margin="10,335,0,0"
+                VerticalAlignment="Top"
+                Width="115" Height="40"
+                Command="{Binding DeleteClientCommand}"/>
+        <Button Content="Перевести деньги" 
+                HorizontalAlignment="Left"
+                Margin="10,380,0,0"
+                VerticalAlignment="Top"
+                Width="115" Height="40"
+                Command="{Binding RemittanceCommand}"/>
+        <Button Content="Выдать кредит" 
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Margin="9.667,290,0,0"
+                VerticalAlignment="Top" 
+                Width="115" Height="40"
+                Command="{Binding CreditCommand}"/>
+        <Button Content="Открыть депозит" 
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Margin="9.667,335,0,0"
+            VerticalAlignment="Top" 
+            Width="115" Height="40"
+            Command="{Binding OpenDepositeCommand}"/>
+        <Border BorderBrush="Black"
+                BorderThickness="1"
+                HorizontalAlignment="Left" 
+                Height="203" Margin="170,380,0,0"
+                VerticalAlignment="Top" Width="535">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap"
+                           FontSize="20" 
+                           Text="Спрогнозировать кредит и депозит на "
+                           Margin="5"/>
+                <StackPanel Height="40"
+                            Margin="5"
+                            Orientation="Horizontal">
+                    <Slider Width="400"
+                            VerticalAlignment="Center"
+                            Value="{Binding Years,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                            Maximum="20"
+                            Minimum="0"
+                            IsSnapToTickEnabled="True"
+                            TickFrequency="1"/>
+                    <TextBlock TextWrapping="Wrap"
+                               Text="{Binding Years}"
+                               Width="60"
+                               FontSize="20"
+                               Margin="5"
+                               VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" 
+                               Text="лет"
+                               FontSize="20"
+                               VerticalAlignment="Center"
+                               Margin="5"/>
+
+                </StackPanel>
+                <StackPanel Height="40"
+                            Margin="5"
+                            Orientation="Horizontal">
+                    <Slider Width="400"
+                            VerticalAlignment="Center"
+                            Value="{Binding Months,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                            Maximum="12"
+                            Minimum="0"
+                            IsSnapToTickEnabled="True"
+                            TickFrequency="1"/>
+                    <TextBlock TextWrapping="Wrap"
+                               Text="{Binding Months}"
+                               Width="30"
+                               FontSize="20"
+                               Margin="5"
+                               VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" 
+                               Text="месяцев"
+                               FontSize="20"
+                               VerticalAlignment="Center"
+                               Margin="5"/>
+
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+        <ListView Grid.Column="1"
+                  HorizontalAlignment="Left"
+                  Height="293"
+                  Margin="129.667,290,0,0" 
+                  VerticalAlignment="Top" Width="218"
+                  ItemsSource="{Binding EventsList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="210">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding DateTime}" FontSize="8" Foreground="Gray"/>
+                                    <TextBlock Text="{Binding Event}" TextWrapping="Wrap" FontSize="12"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
