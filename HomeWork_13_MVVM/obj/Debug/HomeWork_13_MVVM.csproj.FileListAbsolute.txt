@@ -26,3 +26,4 @@ C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\obj\Debug\View\Cre
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\obj\Debug\View\CreditOpen.baml
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\obj\Debug\View\DepositeOpen.g.cs
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\obj\Debug\View\DepositeOpen.baml
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\obj\Debug\HomeWork_13_MVVM.csprojAssemblyReference.cache
