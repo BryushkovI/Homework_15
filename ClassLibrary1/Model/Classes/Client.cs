@@ -57,6 +57,14 @@ namespace ClassLibrary1.Model.Classes
         /// Дата открытия вклада
         /// </summary>
         public DateTime Date_deposite { get; set; }
+        /// <summary>
+        /// Количество лет для прогноза
+        /// </summary>
+        public int Predict_Years { get; set; }
+        /// <summary>
+        /// Количество месяцев для прогноза
+        /// </summary>
+        public int Predict_Months { get; set; }
         #endregion
         public Client(int number)
         {
@@ -104,18 +112,18 @@ namespace ClassLibrary1.Model.Classes
 
         public class WithCapital
         {
-            public int Capital(Client x, DateTime now)
+            public int Capital(Client x, DateTime now, int years, int months)
             {
-                int DeltaDate = (now.Year - x.Date_deposite.Year + MainWindowVM._years) * 12 + (now.Month - x.Date_deposite.Month + MainWindowVM._months);
+                int DeltaDate = (now.Year - x.Date_deposite.Year + years) * 12 + (now.Month - x.Date_deposite.Month + months);
                 int CurentDeposite = Convert.ToInt32(Math.Round(Convert.ToDouble(x.Deposite) * Math.Pow((1 + Convert.ToDouble(x.Deposite_percent) / 1200), DeltaDate)));
                 return CurentDeposite;
             }
         }
         private class WithoutCapital
         {
-            public int Capital(Client x, DateTime now)
+            public int Capital(Client x, DateTime now, int years)
             {
-                int DeltaDate = now.Year - x.Date_deposite.Year + MainWindowVM._years;
+                int DeltaDate = now.Year - x.Date_deposite.Year + years;
                 int CurentDeposite = Convert.ToInt32(Math.Round(Convert.ToDouble(x.Deposite) * (Convert.ToDouble(Convert.ToDouble(x.Deposite_percent) / 100) * Convert.ToDouble(DeltaDate) + 1)));
                 return CurentDeposite;
             }
@@ -125,19 +133,19 @@ namespace ClassLibrary1.Model.Classes
         /// </summary>
         /// <param name="client"></param>
         /// <returns></returns>
-        public static int Capitalization(Client client, DateTime now)
+        public static int Capitalization(Client client, DateTime now, int years,int months)
         {
-            if (client.Deposite_Type == "WithCapital") return new WithCapital().Capital(client, now);
-            else return new WithoutCapital().Capital(client, now);
+            if (client.Deposite_Type == "WithCapital") return new WithCapital().Capital(client, now,years,months);
+            else return new WithoutCapital().Capital(client, now, years);
         }
         /// <summary>
         /// Расчет текущего кредита в зависимости от даты
         /// </summary>
         /// <param name="client"></param>
         /// <returns></returns>
-        public static int Creditation(Client client, DateTime now)
+        public static int Creditation(int years,Client client, DateTime now)
         {
-            int DeltaDate = now.Year - client.Date_credit.Year + MainWindowVM._years;
+            int DeltaDate = now.Year - client.Date_credit.Year + years;
             int CurentCredite = Convert.ToInt32(Math.Round(Convert.ToDouble(client.Credit) * (Convert.ToDouble(Convert.ToDouble(client.Credit_percent) / 100) * Convert.ToDouble(DeltaDate) + 1)));
             return CurentCredite;
         }
@@ -146,7 +154,7 @@ namespace ClassLibrary1.Model.Classes
         /// </summary>
         public int CurentDeposite
         {
-            get { return Capitalization(this, DateTime.Now); }
+            get { return Capitalization(this, DateTime.Now,this.Predict_Years,this.Predict_Months); }
         }
         /// <summary>
         /// Текущая сумма кредита
@@ -155,7 +163,7 @@ namespace ClassLibrary1.Model.Classes
         {
             get
             {
-                return Creditation(this, DateTime.Now);
+                return Creditation(this.Predict_Years,this, DateTime.Now);
             }
         }
     }

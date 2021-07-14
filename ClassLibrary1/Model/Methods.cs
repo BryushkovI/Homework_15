@@ -4,7 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ClassLibrary1.Model.Classes
+using ClassLibrary1.Model.Classes;
+
 
 namespace ClassLibrary1.Model
 {
@@ -72,7 +73,7 @@ namespace ClassLibrary1.Model
         /// </summary>
         /// <param name="departments"></param>
         /// <returns></returns>
-        public ObservableCollection<Client> AllRecipients(ObservableCollection<Department<Client>> departments)
+        public ObservableCollection<Client> AllRecipients(Client client,ObservableCollection<Department<Client>> departments)
         {
             ObservableCollection<Client> allClients = new ObservableCollection<Client>();
 
@@ -80,7 +81,7 @@ namespace ClassLibrary1.Model
             {
                 foreach (var i in e.ClientList)
                 {
-                    if (i != MainWindowVM._SelectedClient) allClients.Add(i);
+                    if (i != client) allClients.Add(i);
                 }
             }
 

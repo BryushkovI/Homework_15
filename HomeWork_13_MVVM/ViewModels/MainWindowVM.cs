@@ -1,5 +1,5 @@
-﻿using HomeWork_13_MVVM.Models;
-using HomeWork_13_MVVM.Models.Classes;
+﻿//using HomeWork_13_MVVM.Models;
+//using HomeWork_13_MVVM.Models.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +13,8 @@ using HomeWork_13_MVVM.Commands;
 using HomeWork_13_MVVM.View;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using ClassLibrary1.Model.Classes;
+using ClassLibrary1.Model;
 
 namespace HomeWork_13_MVVM.ViewModels
 {
@@ -72,6 +74,7 @@ namespace HomeWork_13_MVVM.ViewModels
             set
             {
                 Set(ref _years, value);
+                _SelectedClient.Predict_Months = _years;
                 _SelectedClient.OnPropertyChanged("CurentDeposite");
                 _SelectedClient.OnPropertyChanged("CurentCredit");
             }
@@ -85,6 +88,7 @@ namespace HomeWork_13_MVVM.ViewModels
             set
             {
                 Set(ref _months, value);
+                _SelectedClient.Predict_Months = _months;
                 _SelectedClient.OnPropertyChanged("CurentDeposite");
             }
         }

@@ -51,7 +51,7 @@
     <Compile Include="Model\Classes\Individual_regular.cs" />
     <Compile Include="Model\Classes\Individual_VIP.cs" />
     <Compile Include="Model\FileSystemMethods.cs" />
-    <Compile Include="Model\Functions.cs" />
+    <Compile Include="Model\Function.cs" />
     <Compile Include="Model\Methods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

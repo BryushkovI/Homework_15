@@ -1,6 +1,6 @@
 ﻿using HomeWork_13_MVVM.Commands;
-using HomeWork_13_MVVM.Models;
-using HomeWork_13_MVVM.Models.Classes;
+//using HomeWork_13_MVVM.Models;
+//using HomeWork_13_MVVM.Models.Classes;
 using HomeWork_13_MVVM.View;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ClassLibrary1.Model;
+using ClassLibrary1.Model.Classes;
 
 namespace HomeWork_13_MVVM.ViewModels
 {

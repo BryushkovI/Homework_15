@@ -1,6 +1,6 @@
 ﻿using HomeWork_13_MVVM.Commands;
-using HomeWork_13_MVVM.Models;
-using HomeWork_13_MVVM.Models.Classes;
+//using HomeWork_13_MVVM.Models;
+//using HomeWork_13_MVVM.Models.Classes;
 using HomeWork_13_MVVM.View;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using ClassLibrary1.Model;
+using ClassLibrary1.Model.Classes;
 
 namespace HomeWork_13_MVVM.ViewModels
 {
@@ -101,8 +103,8 @@ namespace HomeWork_13_MVVM.ViewModels
 
         public RemittanceVM()
         {
-            Methods methods = new Methods();
-            _recipients = methods.AllRecipients(MainWindowVM._departments);
+            ClassLibrary1.Model.Methods methods = new ClassLibrary1.Model.Methods();
+            _recipients = methods.AllRecipients(MainWindowVM._SelectedClient,MainWindowVM._departments);
             RemitCommand = new LambdaCommand(OnRemitCommandExecuted, CanRemitCommandExecute);
             CancelRemitCommand = new LambdaCommand(OnCancelRemitExecuted, CanCancelRemitCommandExecute);
         }
