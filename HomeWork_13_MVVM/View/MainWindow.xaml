@@ -162,14 +162,14 @@
                              TextAlignment="Left"
                              FontSize="14"/>
                     <TextBox Height="30" 
-                             Text="{Binding CurentDeposite,Mode=OneWay}"
+                             Text="{Binding CurentDeposite,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                              TextWrapping="Wrap" 
                              Margin="10"
                              IsEnabled="False"
                              TextAlignment="Left"
                              FontSize="14"/>
                     <TextBox Height="30"
-                             Text="{Binding CurentCredit,Mode=OneWay}"
+                             Text="{Binding CurentCredit,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                              TextWrapping="Wrap" 
                              Margin="10"
                              IsEnabled="False"
@@ -259,7 +259,7 @@
                     <Slider Width="400"
                             VerticalAlignment="Center"
                             Value="{Binding Months,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                            Maximum="12"
+                            Maximum="11"
                             Minimum="0"
                             IsSnapToTickEnabled="True"
                             TickFrequency="1"/>

@@ -76,7 +76,7 @@ namespace ClassLibrary1.Model.Classes
         {
             Number = int.Parse(client["Number"].ToString());
             Name = client["Name"].ToString();
-            Type = GetType().ToString().Substring(31);
+            Type = GetType().ToString().Substring(28);
             Bank_Account = int.Parse(client["Bank_Account"].ToString());
             Deposite = int.Parse(client["Deposite"].ToString());
             Credit = int.Parse(client["Credit"].ToString());

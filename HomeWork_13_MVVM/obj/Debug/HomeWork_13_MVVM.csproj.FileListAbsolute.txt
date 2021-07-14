@@ -1,7 +1,9 @@
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\bin\Debug\HomeWork_13_MVVM.exe.config
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\bin\Debug\HomeWork_13_MVVM.exe
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\bin\Debug\HomeWork_13_MVVM.pdb
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\bin\Debug\ClassLibrary1.dll
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\bin\Debug\ClassLibrary1.pdb
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\bin\Debug\Newtonsoft.Json.xml
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\obj\Debug\HomeWork_13_MVVM.csprojAssemblyReference.cache
 C:\Users\bryus\source\repos\HomeWork_13_MVVM\HomeWork_13_MVVM\obj\Debug\View\AddNewClient.g.cs

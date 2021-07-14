@@ -11,12 +11,13 @@ using System.Windows;
 using System.Windows.Input;
 using ClassLibrary1.Model;
 using ClassLibrary1.Model.Classes;
+using System.Collections.ObjectModel;
 
 namespace HomeWork_13_MVVM.ViewModels
 {
     internal class AddNewClientVM : VMBase
     {
-        public static event Action<BankEvent> NewEvent;
+        public static event Action<BankEvent,ObservableCollection<BankEvent>> NewEvent;
         #region Название
         private string _Nameing;
         public string Nameing
@@ -73,7 +74,7 @@ namespace HomeWork_13_MVVM.ViewModels
             if (client.Type == "Юр. лицо") MainWindowVM._departments[0].Add(client);
             else if (client.Type == "Физ. лицо") MainWindowVM._departments[1].Add(client);
             else MainWindowVM._departments[2].Add(client);
-            NewEvent?.Invoke(new BankEvent($"Был создан новый клиент {Nameing}."));
+            NewEvent?.Invoke(new BankEvent($"Был создан новый клиент {Nameing}."),MainWindowVM._eventsList);
             App.Current.MainWindow.Show();
             foreach (Window window in Application.Current.Windows)
             {

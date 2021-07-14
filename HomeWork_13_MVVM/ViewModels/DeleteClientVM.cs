@@ -1,9 +1,7 @@
 ﻿using HomeWork_13_MVVM.Commands;
-//using HomeWork_13_MVVM.Models;
-//using HomeWork_13_MVVM.Models.Classes;
 using HomeWork_13_MVVM.View;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +14,7 @@ namespace HomeWork_13_MVVM.ViewModels
 {
     internal class DeleteClientVM : VMBase
     {
-        public static event Action<BankEvent> NewEvent;
+        public static event Action<BankEvent,ObservableCollection<BankEvent>> NewEvent;
         #region Имя клиента
         public string _selectedClientName;
         public string SelectedClientName
@@ -35,8 +33,8 @@ namespace HomeWork_13_MVVM.ViewModels
         private void OnConfirmDeleteClientCommandExecuted(object p)
         {
             Function function = new Function();
-            function.DeliteClient(MainWindowVM._SelectedClient);
-            NewEvent?.Invoke(new BankEvent($"Был удален клиент {SelectedClientName}."));
+            function.DeliteClient(MainWindowVM._SelectedClient,MainWindowVM._department);
+            NewEvent?.Invoke(new BankEvent($"Был удален клиент {SelectedClientName}."),MainWindowVM._eventsList);
             App.Current.MainWindow.Show();
             foreach (Window window in Application.Current.Windows)
             {

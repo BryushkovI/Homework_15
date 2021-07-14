@@ -1,6 +1,4 @@
 ﻿using HomeWork_13_MVVM.Commands;
-//using HomeWork_13_MVVM.Models;
-//using HomeWork_13_MVVM.Models.Classes;
 using HomeWork_13_MVVM.View;
 using System;
 using System.Collections.Generic;
@@ -17,7 +15,7 @@ namespace HomeWork_13_MVVM.ViewModels
 {
     internal class RemittanceVM : VMBase
     {
-        public static event Action<BankEvent> NewEvent;
+        public static event Action<BankEvent,ObservableCollection<BankEvent>> NewEvent;
         #region Список получателей
         public ObservableCollection<Client> _recipients;
         public ObservableCollection<Client> Recipients
@@ -60,9 +58,9 @@ namespace HomeWork_13_MVVM.ViewModels
         private void OnRemitCommandExecuted(object p)
         {
             Function function = new Function();
-            function.Remit(_selectedRecipient, _sum);
+            function.Remit(_selectedRecipient, _sum,MainWindowVM._departments,MainWindowVM._SelectedClient);
             MainWindowVM._SelectedClient.OnPropertyChanged("Bank_Account");
-            NewEvent?.Invoke(new BankEvent($"{MainWindowVM._SelectedClient.Name} перевел(a) {Sum} на счет {Selectedrecipient.Name}."));
+            NewEvent?.Invoke(new BankEvent($"{MainWindowVM._SelectedClient.Name} перевел(a) {Sum} на счет {Selectedrecipient.Name}."),MainWindowVM._eventsList);
             App.Current.MainWindow.Show();
             foreach (Window window in Application.Current.Windows)
             {

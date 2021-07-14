@@ -2,7 +2,7 @@
 //using HomeWork_13_MVVM.Models.Classes;
 using HomeWork_13_MVVM.View;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +14,7 @@ namespace HomeWork_13_MVVM.ViewModels
 {
     internal class CreditOpenVM : VMBase
     {
-        public static event Action<BankEvent> NewEvent;
+        public static event Action<BankEvent,ObservableCollection<BankEvent>> NewEvent;
         #region Команды
         #region Отмена
         public ICommand OpenCreditCancelCommand { get; }
@@ -41,11 +41,11 @@ namespace HomeWork_13_MVVM.ViewModels
             MainWindowVM._SelectedClient.Date_credit = DateTime.Now;
             MainWindowVM._SelectedClient.OnPropertyChanged("Date_credit");
             MainWindowVM._SelectedClient.OnPropertyChanged("Credit");
-            NewEvent?.Invoke(new BankEvent($"Клиент {MainWindowVM._SelectedClient.Name} взял кредит на сумму {Sum}."));
+            NewEvent?.Invoke(new BankEvent($"Клиент {MainWindowVM._SelectedClient.Name} взял кредит на сумму {Sum}."),MainWindowVM._eventsList);
             App.Current.MainWindow.Show();
             foreach (Window window in Application.Current.Windows)
             {
-                if (window is Remittance)
+                if (window is CreditOpen)
                 {
                     window.Close();
                     break;

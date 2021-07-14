@@ -58,8 +58,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Classes\BankEvent.cs" />
-    <Compile Include="Models\Function.cs" />
     <Compile Include="ViewModels\AddNewClientVM.cs" />
     <Compile Include="ViewModels\CreditOpenVM.cs" />
     <Compile Include="ViewModels\DepositeOpenVM.cs" />
@@ -118,13 +116,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Classes\Entity.cs" />
-    <Compile Include="Models\Classes\Client.cs" />
-    <Compile Include="Models\Classes\Department.cs" />
-    <Compile Include="Models\Classes\Individual_regular.cs" />
-    <Compile Include="Models\Classes\Individual_VIP.cs" />
-    <Compile Include="Models\FileSystemMethods.cs" />
-    <Compile Include="Models\Methods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

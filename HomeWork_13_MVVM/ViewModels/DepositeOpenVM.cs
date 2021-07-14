@@ -1,7 +1,6 @@
 ﻿using HomeWork_13_MVVM.Commands;
-//using HomeWork_13_MVVM.Models.Classes;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +14,7 @@ namespace HomeWork_13_MVVM.ViewModels
 {
     internal class DepositeOpenVM : VMBase
     {
-        public static event Action<BankEvent> NewEvent;
+        public static event Action<BankEvent,ObservableCollection<BankEvent>> NewEvent;
         #region Сумма кредита
         public int _sum;
         public int Sum
@@ -39,7 +38,7 @@ namespace HomeWork_13_MVVM.ViewModels
             MainWindowVM._SelectedClient.Date_deposite = DateTime.Now;
             MainWindowVM._SelectedClient.OnPropertyChanged("Date_deposite");
             MainWindowVM._SelectedClient.OnPropertyChanged("Deposite");
-            NewEvent?.Invoke(new BankEvent($"Клиент {MainWindowVM._SelectedClient.Name} открыл депозит на сумму {Sum}."));
+            NewEvent?.Invoke(new BankEvent($"Клиент {MainWindowVM._SelectedClient.Name} открыл депозит на сумму {Sum}."),MainWindowVM._eventsList);
             foreach (Window window in Application.Current.Windows)
             {
                 if (window is DepositeOpen)

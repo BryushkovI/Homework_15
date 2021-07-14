@@ -74,7 +74,7 @@ namespace HomeWork_13_MVVM.ViewModels
             set
             {
                 Set(ref _years, value);
-                _SelectedClient.Predict_Months = _years;
+                _SelectedClient.Predict_Years = _years;
                 _SelectedClient.OnPropertyChanged("CurentDeposite");
                 _SelectedClient.OnPropertyChanged("CurentCredit");
             }
