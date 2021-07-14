@@ -1,0 +1,9 @@
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\ClassLibrary1\obj\Debug\ModelLibrary.csprojAssemblyReference.cache
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\ClassLibrary1\obj\Debug\ModelLibrary.csproj.CoreCompileInputs.cache
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\bryus\source\repos\HomeWork_13_MVVM\ClassLibrary1\obj\Debug\ModelLibrary.csproj.CopyComplete

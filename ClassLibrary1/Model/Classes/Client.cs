@@ -5,10 +5,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using HomeWork_13_MVVM.ViewModels;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace HomeWork_13_MVVM.Models.Classes
+namespace ClassLibrary1.Model.Classes
 {
     public abstract class Client : INotifyPropertyChanged
     {
@@ -106,7 +106,7 @@ namespace HomeWork_13_MVVM.Models.Classes
         {
             public int Capital(Client x, DateTime now)
             {
-                int DeltaDate = (now.Year - x.Date_deposite.Year+MainWindowVM._years) * 12 + (now.Month - x.Date_deposite.Month+MainWindowVM._months);
+                int DeltaDate = (now.Year - x.Date_deposite.Year + MainWindowVM._years) * 12 + (now.Month - x.Date_deposite.Month + MainWindowVM._months);
                 int CurentDeposite = Convert.ToInt32(Math.Round(Convert.ToDouble(x.Deposite) * Math.Pow((1 + Convert.ToDouble(x.Deposite_percent) / 1200), DeltaDate)));
                 return CurentDeposite;
             }
@@ -137,7 +137,7 @@ namespace HomeWork_13_MVVM.Models.Classes
         /// <returns></returns>
         public static int Creditation(Client client, DateTime now)
         {
-            int DeltaDate = now.Year - client.Date_credit.Year+MainWindowVM._years;
+            int DeltaDate = now.Year - client.Date_credit.Year + MainWindowVM._years;
             int CurentCredite = Convert.ToInt32(Math.Round(Convert.ToDouble(client.Credit) * (Convert.ToDouble(Convert.ToDouble(client.Credit_percent) / 100) * Convert.ToDouble(DeltaDate) + 1)));
             return CurentCredite;
         }
