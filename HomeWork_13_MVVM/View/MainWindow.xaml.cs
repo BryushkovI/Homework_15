@@ -23,6 +23,7 @@ namespace HomeWork_13_MVVM
         public MainWindow()
         {
             InitializeComponent();
+            
         }
     }
 }

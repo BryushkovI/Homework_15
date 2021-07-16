@@ -22,7 +22,6 @@ namespace HomeWork_13_MVVM.ViewModels
             get => _sum;
             set
             {
-
                 Set(ref _sum, value);
             }
         }
@@ -38,7 +37,7 @@ namespace HomeWork_13_MVVM.ViewModels
             MainWindowVM._SelectedClient.Date_deposite = DateTime.Now;
             MainWindowVM._SelectedClient.OnPropertyChanged("Date_deposite");
             MainWindowVM._SelectedClient.OnPropertyChanged("Deposite");
-            NewEvent?.Invoke(new BankEvent($"Клиент {MainWindowVM._SelectedClient.Name} открыл депозит на сумму {Sum}."),MainWindowVM._eventsList);
+            NewEvent?.Invoke(new BankEvent($"Клиент {MainWindowVM._SelectedClient.Name} открыл депозит на сумму {Sum}."), MainWindowVM._eventsList);
             foreach (Window window in Application.Current.Windows)
             {
                 if (window is DepositeOpen)

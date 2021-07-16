@@ -10,6 +10,41 @@ using System.IO;
 
 namespace ClassLibrary1.Model
 {
+    public static class ExtFileSystemMethods
+    {
+        /// <summary>
+        /// Сериализует всех клиентов
+        /// </summary>
+        /// <param name="departments">Отделы</param>
+        /// <param name="Path">Cсылка на файл</param>
+        public static void SerializeCilents(this ObservableCollection<Department<Client>> departments, string Path)
+        {
+            FileSystemMethods fsm = new FileSystemMethods();
+            JObject Entities = new JObject
+            {
+                ["Entity"] = fsm.Clients(departments[0])
+            };
+            JObject Individual_regular = new JObject
+            {
+                ["Individual_regular"] = fsm.Clients(departments[1])
+            };
+            JObject Individual_VIP = new JObject
+            {
+                ["Individual_VIP"] = fsm.Clients(departments[2])
+            };
+            JObject jObject = new JObject
+            {
+                ["Clients"] = new JArray
+                {
+                    Entities,
+                    Individual_regular,
+                    Individual_VIP
+                }
+            };
+            string JSON = jObject.ToString();
+            File.WriteAllText(Path, JSON);
+        }
+    }
     public class FileSystemMethods
     {
         /// <summary>
@@ -83,36 +118,6 @@ namespace ClassLibrary1.Model
             }
             return department;
         }
-        /// <summary>
-        /// Сериализует всех клиентов
-        /// </summary>
-        /// <param name="departments">Отделы</param>
-        /// <param name="Path"></param>
-        public void SerializeClients(ObservableCollection<Department<Client>> departments, string Path)
-        {
-            JObject Entities = new JObject
-            {
-                ["Entity"] = Clients(departments[0])
-            };
-            JObject Individual_regular = new JObject
-            {
-                ["Individual_regular"] = Clients(departments[1])
-            };
-            JObject Individual_VIP = new JObject
-            {
-                ["Individual_VIP"] = Clients(departments[2])
-            };
-            JObject jObject = new JObject
-            {
-                ["Clients"] = new JArray
-                {
-                    Entities,
-                    Individual_regular,
-                    Individual_VIP
-                }
-            };
-            string JSON = jObject.ToString();
-            File.WriteAllText(Path, JSON);
-        }
+       
     }
 }

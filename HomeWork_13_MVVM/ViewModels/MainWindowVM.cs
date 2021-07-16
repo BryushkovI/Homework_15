@@ -1,12 +1,11 @@
-﻿//using HomeWork_13_MVVM.Models;
-//using HomeWork_13_MVVM.Models.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using HomeWork_13_MVVM.Commands;
@@ -20,6 +19,7 @@ namespace HomeWork_13_MVVM.ViewModels
 {
     internal class MainWindowVM : VMBase
     {
+
         #region Список отделов
 
         public static ObservableCollection<Department<Client>> _departments;
@@ -73,10 +73,24 @@ namespace HomeWork_13_MVVM.ViewModels
             get => _years;
             set
             {
-                Set(ref _years, value);
-                _SelectedClient.Predict_Years = _years;
-                _SelectedClient.OnPropertyChanged("CurentDeposite");
-                _SelectedClient.OnPropertyChanged("CurentCredit");
+                try
+                {
+                    Set(ref _years, value);
+                    _SelectedClient.Predict_Years = _years;
+                    _SelectedClient.OnPropertyChanged("CurentDeposite");
+                    _SelectedClient.OnPropertyChanged("CurentCredit");
+                }
+                catch (NullReferenceException)
+                {
+                    if(Years != 0)
+                    {
+                        MessageBox.Show("Не был выбран клиент.\nПеред прогнозированием выберете нужного клиента.",
+                                    "Ошибка",
+                                    MessageBoxButton.OK);
+                        Years = 0;
+                    }
+                    
+                }
             }
         }
         #endregion
@@ -87,9 +101,22 @@ namespace HomeWork_13_MVVM.ViewModels
             get => _months;
             set
             {
-                Set(ref _months, value);
-                _SelectedClient.Predict_Months = _months;
-                _SelectedClient.OnPropertyChanged("CurentDeposite");
+                try
+                {
+                    Set(ref _months, value);
+                    _SelectedClient.Predict_Months = _months;
+                    _SelectedClient.OnPropertyChanged("CurentDeposite");
+                }
+                catch (NullReferenceException)
+                {
+                    if (Months != 0)
+                    {
+                        MessageBox.Show("Не был выбран клиент.\nПеред прогнозированием выберете нужного клиента.",
+                                    "Ошибка",
+                                    MessageBoxButton.OK);
+                        Months = 0;
+                    }
+                }
             }
         }
         #endregion
@@ -112,8 +139,7 @@ namespace HomeWork_13_MVVM.ViewModels
         public ICommand ExitCommand { get; }
         private void OnExitCommandExecuted(object p)
         {
-            FileSystemMethods fsm = new FileSystemMethods();
-            fsm.SerializeClients(_departments, @"Clients.json");
+            _departments.SerializeCilents(@"Clients.json");
             App.Current.MainWindow.Close();
         }
         private bool CanExitCommandExecute(object p) => true;
@@ -217,6 +243,5 @@ namespace HomeWork_13_MVVM.ViewModels
             DepositeOpenVM.NewEvent += BankEvent.CreateNewEvent;
             _eventsList = new ObservableCollection<BankEvent>();
         }
-
     }
 }

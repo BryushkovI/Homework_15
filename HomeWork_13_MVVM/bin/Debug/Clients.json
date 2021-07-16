@@ -40,15 +40,15 @@
         },
         {
           "Name": "test",
-          "Number": 15849969,
+          "Number": 11413977,
           "Bank_Account": 0,
-          "Deposite": 10000,
-          "Credit": 100000,
+          "Deposite": 0,
+          "Credit": 0,
           "Deposite_percent": 5,
           "Credit_percent": 7,
-          "Deposite_type": "WithoutCapital",
-          "Date_credit": "2021-07-14T12:38:08",
-          "Date_deposite": "2021-07-14T12:39:59.5486656+03:00"
+          "Deposite_type": "WithCapital",
+          "Date_credit": "0001-01-01T00:00:00",
+          "Date_deposite": "0001-01-01T00:00:00"
         }
       ]
     },

@@ -48,6 +48,7 @@ namespace HomeWork_13_MVVM.ViewModels
             set
             {
                 Set(ref _sum, value);
+
             }
         }
         #endregion
@@ -57,25 +58,32 @@ namespace HomeWork_13_MVVM.ViewModels
         public ICommand RemitCommand { get; }
         private void OnRemitCommandExecuted(object p)
         {
-            Function function = new Function();
-            function.Remit(_selectedRecipient, _sum,MainWindowVM._departments,MainWindowVM._SelectedClient);
-            MainWindowVM._SelectedClient.OnPropertyChanged("Bank_Account");
-            NewEvent?.Invoke(new BankEvent($"{MainWindowVM._SelectedClient.Name} перевел(a) {Sum} на счет {Selectedrecipient.Name}."),MainWindowVM._eventsList);
-            App.Current.MainWindow.Show();
-            foreach (Window window in Application.Current.Windows)
+            try
             {
-                if (window is Remittance)
+                if (MainWindowVM._SelectedClient.Bank_Account < _sum) throw new ModelExeption.RemittanceExeption();
+                MainWindowVM._SelectedClient.Remit(_sum, MainWindowVM._departments, _selectedRecipient);
+                MainWindowVM._SelectedClient.OnPropertyChanged("Bank_Account");
+                NewEvent?.Invoke(new BankEvent($"{MainWindowVM._SelectedClient.Name} перевел(a) {Sum} на счет {Selectedrecipient.Name}."), MainWindowVM._eventsList);
+                App.Current.MainWindow.Show();
+                foreach (Window window in Application.Current.Windows)
                 {
-                    window.Close();
-                    break;
+                    if (window is Remittance)
+                    {
+                        window.Close();
+                        break;
+                    }
                 }
+            }
+            catch (ModelExeption.RemittanceExeption e) 
+            {
+                MessageBox.Show(e.Msg, "Ошибка перевода", MessageBoxButton.OK);
             }
 
         }
         private bool CanRemitCommandExecute(object p)
         {
             if (MainWindowVM._SelectedClient != null)
-            if (_sum <= MainWindowVM._SelectedClient.Bank_Account && _selectedRecipient!=null) return true;
+            if (_selectedRecipient!=null) return true;
             return false;
         }
         #endregion
@@ -101,7 +109,7 @@ namespace HomeWork_13_MVVM.ViewModels
 
         public RemittanceVM()
         {
-            ClassLibrary1.Model.Methods methods = new ClassLibrary1.Model.Methods();
+            Methods methods = new Methods();
             _recipients = methods.AllRecipients(MainWindowVM._SelectedClient,MainWindowVM._departments);
             RemitCommand = new LambdaCommand(OnRemitCommandExecuted, CanRemitCommandExecute);
             CancelRemitCommand = new LambdaCommand(OnCancelRemitExecuted, CanCancelRemitCommandExecute);

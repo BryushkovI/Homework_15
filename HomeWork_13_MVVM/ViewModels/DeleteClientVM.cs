@@ -32,8 +32,7 @@ namespace HomeWork_13_MVVM.ViewModels
         public ICommand ConfirmDeleteClientCommand { get; }
         private void OnConfirmDeleteClientCommandExecuted(object p)
         {
-            Function function = new Function();
-            function.DeliteClient(MainWindowVM._SelectedClient,MainWindowVM._department);
+            MainWindowVM._SelectedClient.DeliteClient(MainWindowVM._department);
             NewEvent?.Invoke(new BankEvent($"Был удален клиент {SelectedClientName}."),MainWindowVM._eventsList);
             App.Current.MainWindow.Show();
             foreach (Window window in Application.Current.Windows)

@@ -53,6 +53,7 @@
     <Compile Include="Model\FileSystemMethods.cs" />
     <Compile Include="Model\Function.cs" />
     <Compile Include="Model\Methods.cs" />
+    <Compile Include="Model\ModelExeption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
