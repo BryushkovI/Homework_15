@@ -32,7 +32,7 @@ namespace ClassLibrary1.Model
         /// <param name="Type">Тип клиента</param>
         /// <param name="Capitalizaion">Тип капитализации</param>
         /// <returns></returns>
-        public Client AddClient(string Nameing, string Type, string Capitalizaion)
+        public static Client AddClient(string Nameing, string Type, string Capitalizaion)
         {
             Methods methods = new Methods();
             Client client;
@@ -73,7 +73,7 @@ namespace ClassLibrary1.Model
         /// </summary>
         /// <param name="departments"></param>
         /// <returns></returns>
-        public ObservableCollection<Client> AllRecipients(Client client,ObservableCollection<Department<Client>> departments)
+        public static ObservableCollection<Client> AllRecipients(Client client,ObservableCollection<Department<Client>> departments)
         {
             ObservableCollection<Client> allClients = new ObservableCollection<Client>();
 
