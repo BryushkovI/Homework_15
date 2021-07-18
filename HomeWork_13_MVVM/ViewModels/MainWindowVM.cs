@@ -228,8 +228,7 @@ namespace HomeWork_13_MVVM.ViewModels
         #endregion
         public MainWindowVM()
         {
-            FileSystemMethods fsm = new FileSystemMethods();
-            _departments = fsm.DeserializeClients(@"Clients.json");
+            _departments = FileSystemMethods.DeserializeClients(@"Clients.json");
             AddNewClientCommand = new LambdaCommand(OnAddNewClientCommandExecuted, CanAddNewClientCommandExecute);
             ExitCommand = new LambdaCommand(OnExitCommandExecuted, CanExitCommandExecute);
             DeleteClientCommand = new LambdaCommand(OnDeleteClientCommandExecuted, CanDeleteClientCommandExecute);
