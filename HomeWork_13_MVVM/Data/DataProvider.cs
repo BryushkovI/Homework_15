@@ -10,11 +10,6 @@ namespace HomeWork_13_MVVM.Data
 {
     public class DataProvider
     {
-        public ObservableCollection<Department<Client>> GetDepartments()
-        {
-            FileSystemMethods fsm = new FileSystemMethods();
-            return fsm.DeserializeClients(@"Clients.json");
-        }
 
     }
 }

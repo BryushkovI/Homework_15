@@ -216,7 +216,7 @@ namespace HomeWork_13_MVVM.ViewModels
         #endregion
 
         #region Список событий
-        
+
         public static ObservableCollection<BankEvent> _eventsList;
         public ObservableCollection<BankEvent> EventsList
         {
@@ -229,8 +229,7 @@ namespace HomeWork_13_MVVM.ViewModels
         #endregion
         public MainWindowVM()
         {
-            DataProvider dataProvider = new DataProvider();
-            _departments = dataProvider.GetDepartments();
+            _departments = new FileSystemMethods().departments;
             AddNewClientCommand = new LambdaCommand(OnAddNewClientCommandExecuted, CanAddNewClientCommandExecute);
             ExitCommand = new LambdaCommand(OnExitCommandExecuted, CanExitCommandExecute);
             DeleteClientCommand = new LambdaCommand(OnDeleteClientCommandExecuted, CanDeleteClientCommandExecute);

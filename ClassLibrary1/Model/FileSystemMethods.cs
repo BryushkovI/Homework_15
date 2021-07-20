@@ -10,6 +10,10 @@ using System.IO;
 
 namespace ClassLibrary1.Model
 {
+    public interface IClientProvider
+    {
+        ObservableCollection<Department<Client>> DeserializeClients(string Path);
+    }
     public static class ExtFileSystemMethods
     {
         /// <summary>
@@ -45,8 +49,13 @@ namespace ClassLibrary1.Model
             File.WriteAllText(Path, JSON);
         }
     }
-    public class FileSystemMethods
+    public class FileSystemMethods : IClientProvider
     {
+        public readonly ObservableCollection<Department<Client>> departments;
+        public FileSystemMethods()
+        {
+            departments = DeserializeClients(@"Clients.json");
+        }
         /// <summary>
         /// Десериализует список отделов с клиентами
         /// </summary>
