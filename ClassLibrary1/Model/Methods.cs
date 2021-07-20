@@ -32,7 +32,7 @@ namespace ClassLibrary1.Model
         /// <param name="Type">Тип клиента</param>
         /// <param name="Capitalizaion">Тип капитализации</param>
         /// <returns></returns>
-        public static Client AddClient(string Nameing, string Type, string Capitalizaion)
+        public Client AddClient(string Nameing, string Type, string Capitalizaion)
         {
             Client client;
             Type = Type.ToString().Substring(38);

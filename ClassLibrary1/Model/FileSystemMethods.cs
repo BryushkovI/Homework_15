@@ -19,17 +19,18 @@ namespace ClassLibrary1.Model
         /// <param name="Path">Cсылка на файл</param>
         public static void SerializeCilents(this ObservableCollection<Department<Client>> departments, string Path)
         {
+            FileSystemMethods fsm = new FileSystemMethods();
             JObject Entities = new JObject
             {
-                ["Entity"] = FileSystemMethods.Clients(departments[0])
+                ["Entity"] = fsm.Clients(departments[0])
             };
             JObject Individual_regular = new JObject
             {
-                ["Individual_regular"] = FileSystemMethods.Clients(departments[1])
+                ["Individual_regular"] = fsm.Clients(departments[1])
             };
             JObject Individual_VIP = new JObject
             {
-                ["Individual_VIP"] = FileSystemMethods.Clients(departments[2])
+                ["Individual_VIP"] = fsm.Clients(departments[2])
             };
             JObject jObject = new JObject
             {
@@ -44,14 +45,14 @@ namespace ClassLibrary1.Model
             File.WriteAllText(Path, JSON);
         }
     }
-    public static class FileSystemMethods
+    public class FileSystemMethods
     {
         /// <summary>
         /// Десериализует список отделов с клиентами
         /// </summary>
         /// <param name="Path"></param>
         /// <returns></returns>
-        public static ObservableCollection<Department<Client>> DeserializeClients(string Path)
+        public ObservableCollection<Department<Client>> DeserializeClients(string Path)
         {
             ObservableCollection<Department<Client>> departments = new ObservableCollection<Department<Client>>();
             string JSON = File.ReadAllText(Path);
@@ -68,7 +69,7 @@ namespace ClassLibrary1.Model
         /// </summary>
         /// <param name="Type">Токен отдела</param>
         /// <returns></returns>
-        public static Department<Client> DeserializeSelectedType(JToken Type)
+        public Department<Client> DeserializeSelectedType(JToken Type)
         {
             Department<Client> clients = new Department<Client>();
             JArray array;
@@ -107,7 +108,7 @@ namespace ClassLibrary1.Model
         /// </summary>
         /// <param name="clients">Список клиентов в отделе</param>
         /// <returns></returns>
-        public static JArray Clients(Department<Client> clients)
+        public JArray Clients(Department<Client> clients)
         {
             JArray department = new JArray();
             foreach (var e in clients.ClientList)
