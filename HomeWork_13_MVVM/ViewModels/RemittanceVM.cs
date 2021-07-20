@@ -109,8 +109,7 @@ namespace HomeWork_13_MVVM.ViewModels
 
         public RemittanceVM()
         {
-            Methods methods = new Methods();
-            _recipients = methods.AllRecipients(MainWindowVM._SelectedClient,MainWindowVM._departments);
+            _recipients = Methods.AllRecipients(MainWindowVM._SelectedClient,MainWindowVM._departments);
             RemitCommand = new LambdaCommand(OnRemitCommandExecuted, CanRemitCommandExecute);
             CancelRemitCommand = new LambdaCommand(OnCancelRemitExecuted, CanCancelRemitCommandExecute);
         }

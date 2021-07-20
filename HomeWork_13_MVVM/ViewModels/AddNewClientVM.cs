@@ -67,8 +67,7 @@ namespace HomeWork_13_MVVM.ViewModels
         public ICommand CreateNewClientCommand { get; }
         private void OnCreateNewClientCommandExecuted(object p)
         {
-            Methods methods = new Methods();
-            Client client = methods.AddClient(_Nameing, _Type, _Capitalization);
+            Client client = Methods.AddClient(_Nameing, _Type, _Capitalization);
             if (client.Type == "Юр. лицо") MainWindowVM._departments[0].Add(client);
             else if (client.Type == "Физ. лицо") MainWindowVM._departments[1].Add(client);
             else MainWindowVM._departments[2].Add(client);
