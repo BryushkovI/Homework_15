@@ -34,20 +34,19 @@ namespace ClassLibrary1.Model
         /// <returns></returns>
         public Client AddClient(string Nameing, string Type, string Capitalizaion)
         {
-            Methods methods = new Methods();
             Client client;
             Type = Type.ToString().Substring(38);
             switch (Type)
             {
 
                 case "Юр. лицо":
-                    client = new Entity(methods.GetNum(Type));
+                    client = new Entity(GetNum(Type));
                     break;
                 case "Физ. лицо":
-                    client = new Individual_regular(methods.GetNum(Type));
+                    client = new Individual_regular(GetNum(Type));
                     break;
                 default:
-                    client = new Individual_VIP(methods.GetNum(Type));
+                    client = new Individual_VIP(GetNum(Type));
                     break;
             }
 

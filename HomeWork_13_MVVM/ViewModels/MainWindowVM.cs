@@ -14,12 +14,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ClassLibrary1.Model.Classes;
 using ClassLibrary1.Model;
+using ClassLibrary1;
+using HomeWork_13_MVVM.Data;
 
 namespace HomeWork_13_MVVM.ViewModels
 {
     internal class MainWindowVM : VMBase
     {
-
         #region Список отделов
 
         public static ObservableCollection<Department<Client>> _departments;
@@ -228,8 +229,8 @@ namespace HomeWork_13_MVVM.ViewModels
         #endregion
         public MainWindowVM()
         {
-            FileSystemMethods fsm = new FileSystemMethods();
-            _departments = fsm.DeserializeClients(@"Clients.json");
+            DataProvider dataProvider = new DataProvider();
+            _departments = dataProvider.GetDepartments();
             AddNewClientCommand = new LambdaCommand(OnAddNewClientCommandExecuted, CanAddNewClientCommandExecute);
             ExitCommand = new LambdaCommand(OnExitCommandExecuted, CanExitCommandExecute);
             DeleteClientCommand = new LambdaCommand(OnDeleteClientCommandExecuted, CanDeleteClientCommandExecute);

@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\DataProvider.cs" />
     <Compile Include="ViewModels\AddNewClientVM.cs" />
     <Compile Include="ViewModels\CreditOpenVM.cs" />
     <Compile Include="ViewModels\DepositeOpenVM.cs" />

@@ -1,5 +1,4 @@
 ﻿using HomeWork_13_MVVM.Commands;
-//using HomeWork_13_MVVM.Models.Classes;
 using HomeWork_13_MVVM.View;
 using System;
 using System.Collections.ObjectModel;
