@@ -21,7 +21,6 @@ namespace HomeWork_13_MVVM.ViewModels
 {
     internal class MainWindowVM : VMBase
     {
-        private readonly IClientProvider clientProvider;
         #region Список отделов
 
         public static ObservableCollection<Department<Client>> _departments;
@@ -230,8 +229,7 @@ namespace HomeWork_13_MVVM.ViewModels
         #endregion
         public MainWindowVM()
         {
-            clientProvider = new FileSystemMethods();
-            _departments = clientProvider.DeserializeClients(@"Clients.json");
+            _departments = new DataProvider().DeserializeClients(@"Clients.json");
             AddNewClientCommand = new LambdaCommand(OnAddNewClientCommandExecuted, CanAddNewClientCommandExecute);
             ExitCommand = new LambdaCommand(OnExitCommandExecuted, CanExitCommandExecute);
             DeleteClientCommand = new LambdaCommand(OnDeleteClientCommandExecuted, CanDeleteClientCommandExecute);

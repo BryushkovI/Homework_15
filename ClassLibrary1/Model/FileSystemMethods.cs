@@ -49,13 +49,9 @@ namespace ClassLibrary1.Model
             File.WriteAllText(Path, JSON);
         }
     }
-    public class FileSystemMethods : IClientProvider
+    public class FileSystemMethods
     {
         public readonly ObservableCollection<Department<Client>> departments;
-        public FileSystemMethods()
-        {
-            departments = DeserializeClients(@"Clients.json");
-        }
         /// <summary>
         /// Десериализует список отделов с клиентами
         /// </summary>

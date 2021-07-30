@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace HomeWork_13_MVVM.Data
 {
-    public class DataProvider
+    public class DataProvider : IClientProvider
     {
-
+        public ObservableCollection<Department<Client>> DeserializeClients(string Path)
+        {
+            return new FileSystemMethods().DeserializeClients(Path);
+        }
     }
 }
