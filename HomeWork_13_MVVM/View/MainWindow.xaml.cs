@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HomeWork_13_MVVM.ViewModels;
+using HomeWork_13_MVVM.Data;
 
 namespace HomeWork_13_MVVM
 {
@@ -20,10 +22,11 @@ namespace HomeWork_13_MVVM
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(  )
         {
             InitializeComponent();
             
         }
     }
+    
 }

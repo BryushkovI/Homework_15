@@ -21,6 +21,7 @@ namespace HomeWork_13_MVVM.ViewModels
 {
     internal class MainWindowVM : VMBase
     {
+
         #region Список отделов
 
         public static ObservableCollection<Department<Client>> _departments;
@@ -227,8 +228,9 @@ namespace HomeWork_13_MVVM.ViewModels
             }
         }
         #endregion
-        public MainWindowVM()
+        public MainWindowVM( )
         {
+            
             _departments = new DataProvider().DeserializeClients(@"Clients.json");
             AddNewClientCommand = new LambdaCommand(OnAddNewClientCommandExecuted, CanAddNewClientCommandExecute);
             ExitCommand = new LambdaCommand(OnExitCommandExecuted, CanExitCommandExecute);

@@ -49,7 +49,7 @@ namespace ClassLibrary1.Model
             File.WriteAllText(Path, JSON);
         }
     }
-    public class FileSystemMethods
+    public class FileSystemMethods : IClientProvider
     {
         public readonly ObservableCollection<Department<Client>> departments;
         /// <summary>
