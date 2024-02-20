@@ -22,10 +22,13 @@ namespace HomeWork_13_MVVM
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(  )
+        private MainWindowVM _VM;
+        public MainWindow( MainWindowVM VM )
         {
-            InitializeComponent();
+            _VM = VM;
             
+            InitializeComponent();
+            DataContext = _VM;
         }
     }
     

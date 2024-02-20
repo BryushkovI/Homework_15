@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HomeWork_13_MVVM.ViewModels
 {
-    internal abstract class VMBase : INotifyPropertyChanged
+    public abstract class VMBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

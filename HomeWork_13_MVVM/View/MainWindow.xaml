@@ -4,12 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork_13_MVVM"
-        xmlns:viewmodels="clr-namespace:HomeWork_13_MVVM.ViewModels"
+        xmlns:viewmodels="clr-namespace:HomeWork_13_MVVM.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowVM,IsDesignTimeCreatable=True}"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" >
-    <Window.DataContext>
-        <viewmodels:MainWindowVM/>
-    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>

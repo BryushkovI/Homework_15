@@ -19,7 +19,7 @@ using HomeWork_13_MVVM.Data;
 
 namespace HomeWork_13_MVVM.ViewModels
 {
-    internal class MainWindowVM : VMBase
+    public class MainWindowVM : VMBase
     {
 
         #region Список отделов
@@ -228,10 +228,11 @@ namespace HomeWork_13_MVVM.ViewModels
             }
         }
         #endregion
-        public MainWindowVM( )
+        private DataProvider _dataProvider;
+        public MainWindowVM( DataProvider dataProvider )
         {
-            
-            _departments = new DataProvider().DeserializeClients(@"Clients.json");
+            _dataProvider = dataProvider;
+            _departments = _dataProvider.DeserializeClients(@"Clients.json");
             AddNewClientCommand = new LambdaCommand(OnAddNewClientCommandExecuted, CanAddNewClientCommandExecute);
             ExitCommand = new LambdaCommand(OnExitCommandExecuted, CanExitCommandExecute);
             DeleteClientCommand = new LambdaCommand(OnDeleteClientCommandExecuted, CanDeleteClientCommandExecute);
@@ -245,5 +246,6 @@ namespace HomeWork_13_MVVM.ViewModels
             DepositeOpenVM.NewEvent += BankEvent.CreateNewEvent;
             _eventsList = new ObservableCollection<BankEvent>();
         }
+        
     }
 }
