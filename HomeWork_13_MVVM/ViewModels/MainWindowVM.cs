@@ -246,6 +246,22 @@ namespace HomeWork_13_MVVM.ViewModels
             DepositeOpenVM.NewEvent += BankEvent.CreateNewEvent;
             _eventsList = new ObservableCollection<BankEvent>();
         }
-        
+        public MainWindowVM()
+        {
+            _dataProvider = new DataProvider();
+            _departments = _dataProvider.DeserializeClients(@"Clients.json");
+            AddNewClientCommand = new LambdaCommand(OnAddNewClientCommandExecuted, CanAddNewClientCommandExecute);
+            ExitCommand = new LambdaCommand(OnExitCommandExecuted, CanExitCommandExecute);
+            DeleteClientCommand = new LambdaCommand(OnDeleteClientCommandExecuted, CanDeleteClientCommandExecute);
+            RemittanceCommand = new LambdaCommand(OnRemittanceCommandExecuted, CanRemittanceCommandExecute);
+            CreditCommand = new LambdaCommand(OnCreditCommandExecuted, CanCreditCommandExecute);
+            OpenDepositeCommand = new LambdaCommand(OnOpenDepositeCommandExecuted, CanOpenDepositeCommandExecute);
+            AddNewClientVM.NewEvent += BankEvent.CreateNewEvent;
+            DeleteClientVM.NewEvent += BankEvent.CreateNewEvent;
+            RemittanceVM.NewEvent += BankEvent.CreateNewEvent;
+            CreditOpenVM.NewEvent += BankEvent.CreateNewEvent;
+            DepositeOpenVM.NewEvent += BankEvent.CreateNewEvent;
+            _eventsList = new ObservableCollection<BankEvent>();
+        }
     }
 }

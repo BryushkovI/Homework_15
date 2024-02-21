@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork_13_MVVM"
         xmlns:viewmodels="clr-namespace:HomeWork_13_MVVM.ViewModels" 
-        d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowVM,IsDesignTimeCreatable=True}"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowVM}"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="None" >
     <Grid>
