@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HomeWork_13_MVVM.ViewModels;
 using HomeWork_13_MVVM.Data;
+using ClassLibrary1.Model;
 
 namespace HomeWork_13_MVVM
 {
@@ -22,13 +23,12 @@ namespace HomeWork_13_MVVM
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainWindowVM _VM;
-        public MainWindow( MainWindowVM VM )
+        public MainWindow()
         {
-            _VM = VM;
-            
+
             InitializeComponent();
-            DataContext = _VM;
+            IClientProvider clientProvider = new DataProvider();
+            DataContext = new MainWindowVM(clientProvider);
         }
     }
     

@@ -41,14 +41,14 @@
         {
           "Name": "test",
           "Number": 11413977,
-          "Bank_Account": 0,
-          "Deposite": 0,
+          "Bank_Account": 450000,
+          "Deposite": 15000,
           "Credit": 0,
           "Deposite_percent": 5,
           "Credit_percent": 7,
           "Deposite_type": "WithCapital",
           "Date_credit": "0001-01-01T00:00:00",
-          "Date_deposite": "0001-01-01T00:00:00"
+          "Date_deposite": "2024-02-25T22:08:44.6306541+03:00"
         }
       ]
     },
